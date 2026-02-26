@@ -70,7 +70,7 @@ a {
 .container {
     max-width: var(--container-width-desktop);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 200px;
 }
 
 .btn {
