@@ -263,3 +263,220 @@
         align-items: flex-start;
     }
 }
+
+.pets {
+    padding: 80px 0 100px;
+}
+
+.pets__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pets__title {
+    font-size: 54px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--color-accent);
+}
+
+.pets__subtitle {
+    font-size: 26px;
+    line-height: 1.3;
+    font-weight: 500;
+    text-align: center;
+    max-width: 920px;
+    margin-bottom: 24px;
+}
+
+.pets__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.pets__arrow {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid var(--color-navy);
+    background: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.pets__arrow-icon {
+    width: 22px;
+    height: 20px;
+    background-color: var(--color-navy);
+    -webkit-mask: url('../../assets/icons/icon-arrow-dark.svg') center / contain no-repeat;
+    mask: url('../../assets/icons/icon-arrow-dark.svg') center / contain no-repeat;
+    transform: rotate(180deg);
+    transition: background-color 0.2s ease;
+}
+
+.pets__arrow--next .pets__arrow-icon {
+    transform: rotate(0deg);
+}
+
+.pets__arrow:hover {
+    background: var(--color-navy);
+}
+
+.pets__arrow:hover .pets__arrow-icon {
+    background-color: var(--color-white);
+}
+
+.pets__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.pets__cta {
+    margin-top: 32px;
+    padding: 12px 24px;
+    border: 1px solid var(--color-navy);
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-navy);
+    background: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.pets__cta:hover {
+    background: var(--color-navy);
+    color: var(--color-white);
+}
+
+.pets__cta-icon {
+    width: 22px;
+    height: 20px;
+    display: block;
+    background-color: var(--color-navy);
+    -webkit-mask: url('../../assets/icons/icon-arrow-dark.svg') center / contain no-repeat;
+    mask: url('../../assets/icons/icon-arrow-dark.svg') center / contain no-repeat;
+    transition: background-color 0.2s ease;
+}
+
+.pets__cta:hover .pets__cta-icon {
+    background-color: var(--color-white);
+}
+
+.pets-card {
+    background-color: #2C1B47;
+    border-radius: 5px;
+    overflow: hidden;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 720px;
+    cursor: pointer;
+}
+
+.pets-card__media {
+    width: 100%;
+    height: 436px;
+    overflow: hidden;
+    position: relative;
+}
+
+.pets-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform 0.35s ease;
+}
+
+.pets-card:hover .pets-card__image {
+    transform: scale(1.06);
+}
+
+.pets-card__name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #2C1B47;
+    padding: 0;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    font-size: 26px;
+    text-transform: capitalize;
+    min-width: 121px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pets-card__body {
+    padding: 24px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    flex: 1 1 auto;
+}
+
+.pets-card__title {
+    font-size: 26px;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.pets-card__text {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.pets-card__link {
+    margin-top: auto;
+    color: var(--color-orange);
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 5px;
+}
+
+.pets-card__link:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pets-card__link img {
+    width: 22px;
+    height: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .pets__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .pets__grid {
+        grid-template-columns: 1fr;
+    }
+}
