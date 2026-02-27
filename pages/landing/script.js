@@ -288,4 +288,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderFeedbackCards();
 
+    document.querySelectorAll('.care-love__card').forEach((card) => {
+        card.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.closest('.care-love__feed-link')) {
+                return;
+            }
+            window.location.href = '../animal/index.html';
+        });
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                window.location.href = '../animal/index.html';
+            }
+        });
+    });
+
 });
