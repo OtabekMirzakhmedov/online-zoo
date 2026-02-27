@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Zoo | Zoos</title>
+    <link rel="icon" href="../../assets/icons/favicon.png.jpg" type="image/png">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="../../index.html" class="header__logo" aria-label="Online Zoo home">
+                <img class="header__logo-img" src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+            </a>
+            <nav class="header__nav" aria-label="Primary">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="../landing/index.html" class="header__nav-link">About</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../map/index.html" class="header__nav-link">Map</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link header__nav-link--active">Zoos</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../contact/index.html" class="header__nav-link">Contact us</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project"
+                            class="header__nav-link header__nav-link--design" target="_blank"
+                            rel="noreferrer">Design</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__social" aria-label="Social links">
+                <a class="header__social-link" href="#" aria-label="YouTube">
+                    <img class="header__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Instagram">
+                    <img class="header__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Facebook">
+                    <img class="header__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="zoo-layout">
+            <!-- Left Side Panel Sticky -->
+            <aside class="side-panel" id="sidePanel">
+                <button class="side-panel__toggle" id="sidePanelToggle" aria-label="Toggle Side Panel">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="side-panel__list" id="sidePanelList">
+                    <!-- Dynamic Items injected by script.js -->
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="zoo-content">
+                <h1 class="visually-hidden">Online Zoo</h1>
+
+                <section class="live-cams">
+                    <div class="container live-cams__container">
+                        <div class="live-cams__header">
+                            <h3 class="animal-title" id="animalTitle">Live Panda Cams</h3>
+                            <button class="btn btn--primary" id="donateNowBtn"
+                                style="grid-column: 3; justify-self: end; width: 240px; height: 74px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; gap: 12px;">
+                                <span class="btn__text">Donate Now</span>
+                            </button>
+                        </div>
+
+                        <div class="video-container" id="mainVideoContainer">
+                            <!-- Main iframe dynamically changed -->
+                            <iframe id="mainVideo" src="" title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+
+                        <div class="more-views">
+                            <h4 class="more-views__title">More Live Views</h4>
+                            <div class="more-views__carousel" aria-label="Live views carousel">
+                                <button class="carousel-arrow carousel-arrow--prev" id="prevView"
+                                    aria-label="Previous View">
+                                    <span class="carousel-arrow-icon"></span>
+                                </button>
+
+                                <div class="carousel-track" id="carouselTrack">
+                                    <!-- Dynamic Thumbnails injected here -->
+                                </div>
+
+                                <button class="carousel-arrow carousel-arrow--next" id="nextView"
+                                    aria-label="Next View">
+                                    <span class="carousel-arrow-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="pay-feed">
+                    <div class="container pay-feed__container">
+                        <h2 class="section-title">Pay and Feed</h2>
+                        <p class="pay-feed__text">You can choose a donation amount for our beloved pets</p>
+                        <button class="btn btn--outline" id="donationAmountBtn">
+                            <span class="btn__text">$ Donation Amount</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="did-you-know">
+                    <div class="container did-you-know__container">
+                        <div class="did-you-know__box">
+                            <h2 class="section-title">Did you know?</h2>
+                            <p class="did-you-know__text" id="animalFact">
+                                <!-- Dynamic Fact goes here -->
+                            </p>
+                            <a href="../map/index.html" class="btn btn--outline">
+                                <span class="btn__text">View Map</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__top">
+                <div class="footer__brands">
+                    <a href="../landing/index.html" class="footer__brand-link" aria-label="Online Zoo home">
+                        <img class="footer__brand-logo footer__brand-logo--zoo" src="../../assets/icons/logo-online-zoo.svg"
+                            alt="Online Zoo">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="Yem Digital">
+                        <img class="footer__brand-logo footer__brand-logo--yem" src="../../assets/icons/logo-yem-digital.svg"
+                            alt="Yem Digital">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="RS School">
+                        <img class="footer__brand-logo footer__brand-logo--rs" src="../../assets/icons/logo-rs-school.svg"
+                            alt="RS School">
+                    </a>
+                </div>
+
+                <nav class="footer__nav" aria-label="Footer navigation">
+                    <ul class="footer__nav-list">
+                        <li><a class="footer__nav-link" href="../landing/index.html">About</a></li>
+                        <li><a class="footer__nav-link" href="../map/index.html">Map</a></li>
+                        <li><a class="footer__nav-link" href="../animal/index.html">Zoos</a></li>
+                        <li><a class="footer__nav-link" href="../contact/index.html">Contact us</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#" class="footer__donate">
+                    Donate for volunteers
+                    <span class="footer__donate-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="footer__divider" aria-hidden="true"></div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyrights">
+                    <span class="footer__copyright">© 2021 DinaK</span>
+                    <span class="footer__copyright">© Yem Digital</span>
+                    <span class="footer__copyright">© RSSchool</span>
+                </div>
+                <div class="footer__social" aria-label="Social links">
+                    <a class="footer__social-link" href="#" aria-label="YouTube">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Instagram">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Facebook">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
