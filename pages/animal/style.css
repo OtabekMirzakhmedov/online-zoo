@@ -1,5 +1,3 @@
-/* Base Variables & Overrides for Zoos Page */
-
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -11,17 +9,17 @@
     border: 0;
 }
 
-/* Layout */
+
 .zoo-layout {
     display: flex;
     min-height: calc(100vh - 80px);
-    /* header height approx */
+
     position: relative;
     max-width: 1920px;
     margin: 0 auto;
 }
 
-/* Side Panel */
+
 .side-panel {
     width: 260px;
     background-color: var(--color-navy, #2C1B47);
@@ -109,7 +107,7 @@
     font-weight: 500;
 }
 
-/* Main Content */
+
 .zoo-content {
     flex: 1;
     padding: 40px 0;
@@ -118,7 +116,7 @@
 
 .zoo-content .container {
     padding: 0 40px;
-    /* Adjust padding for zoo content since it sits next to sidebar */
+
 }
 
 .section-title {
@@ -129,7 +127,7 @@
     margin-bottom: 20px;
 }
 
-/* Live Cams */
+
 .live-cams {
     margin-bottom: 60px;
 }
@@ -224,7 +222,7 @@
     border: 2px solid var(--color-orange, #FF7B00);
 }
 
-/* Pay & Feed */
+
 .pay-feed {
     background-color: var(--color-navy, #2C1B47);
     color: #fff;
@@ -243,7 +241,7 @@
     margin-bottom: 25px;
 }
 
-/* Did You Know */
+
 .did-you-know__box {
     background-color: #fff;
     padding: 40px;
@@ -258,7 +256,7 @@
     margin-bottom: 30px;
 }
 
-/* Responsive Overrides */
+
 @media (max-width: 1200px) {
     .side-panel {
         width: 200px;

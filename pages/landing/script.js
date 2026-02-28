@@ -1,4 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    const burgerMenu = document.getElementById('burgerMenu');
+    const headerNav = document.getElementById('headerNav');
+
+    if (burgerMenu && headerNav) {
+
+        const overlay = document.createElement('div');
+        overlay.className = 'header__overlay';
+        document.body.appendChild(overlay);
+
+        const toggleMenu = () => {
+            const isOpen = headerNav.classList.toggle('header__nav--open');
+            burgerMenu.classList.toggle('header__burger--active');
+            overlay.classList.toggle('header__overlay--visible');
+            burgerMenu.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        };
+
+        burgerMenu.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+
+        headerNav.querySelectorAll('.header__nav-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (headerNav.classList.contains('header__nav--open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && headerNav.classList.contains('header__nav--open')) {
+                toggleMenu();
+            }
+        });
+    }
+
     const pets = [
         {
             id: 1,
@@ -288,6 +326,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderFeedbackCards();
 
+
+    const donationButton = document.querySelector('.donation__button');
+    const payFeedCta = document.querySelector('.pay-feed__cta');
+    const footerDonate = document.querySelector('.footer__donate');
+
+
+    if (donationButton) {
+        donationButton.addEventListener('click', () => {
+            if (typeof window.openCarePopup === 'function') {
+                window.openCarePopup();
+            }
+        });
+    }
+
+
+    if (payFeedCta) {
+        payFeedCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (typeof window.openDonationPopup === 'function') {
+                window.openDonationPopup();
+            }
+        });
+    }
+
+
+    if (footerDonate) {
+        footerDonate.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (typeof window.openCarePopup === 'function') {
+                window.openCarePopup();
+            }
+        });
+    }
+
     document.querySelectorAll('.care-love__card').forEach((card) => {
         card.addEventListener('click', (event) => {
             const target = event.target;
@@ -303,5 +375,60 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const careLoveCarousel = document.getElementById('careLoveCarousel');
+    const careLoveTrack = document.getElementById('careLoveTrack');
+    const careLoveDots = document.getElementById('careLoveDots');
+
+    if (careLoveCarousel && careLoveTrack && careLoveDots) {
+        const slides = careLoveTrack.querySelectorAll('.care-love__carousel-slide');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'care-love__carousel-dot';
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            careLoveDots.appendChild(dot);
+        }
+
+        const dots = careLoveDots.querySelectorAll('.care-love__carousel-dot');
+
+        const updateDots = () => {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('care-love__carousel-dot--active', index === currentSlide);
+            });
+        };
+
+        const goToSlide = (index) => {
+            currentSlide = index;
+            careLoveTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateDots();
+        };
+
+        updateDots();
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        careLoveCarousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        careLoveCarousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentSlide < totalSlides - 1) {
+                    goToSlide(currentSlide + 1);
+                } else if (diff < 0 && currentSlide > 0) {
+                    goToSlide(currentSlide - 1);
+                }
+            }
+        });
+    }
 
 });

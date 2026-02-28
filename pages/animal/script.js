@@ -53,6 +53,44 @@ let currentAnimalIndex = 0;
 let currentVideoIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const burgerMenu = document.getElementById('burgerMenu');
+    const headerNav = document.getElementById('headerNav');
+
+    if (burgerMenu && headerNav) {
+
+        const overlay = document.createElement('div');
+        overlay.className = 'header__overlay';
+        document.body.appendChild(overlay);
+
+        const toggleMenu = () => {
+            const isOpen = headerNav.classList.toggle('header__nav--open');
+            burgerMenu.classList.toggle('header__burger--active');
+            overlay.classList.toggle('header__overlay--visible');
+            burgerMenu.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        };
+
+        burgerMenu.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+
+        headerNav.querySelectorAll('.header__nav-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (headerNav.classList.contains('header__nav--open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && headerNav.classList.contains('header__nav--open')) {
+                toggleMenu();
+            }
+        });
+    }
+
     const sidePanel = document.getElementById('sidePanel');
     const sidePanelToggle = document.getElementById('sidePanelToggle');
     const sidePanelList = document.getElementById('sidePanelList');
@@ -65,12 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevViewBtn = document.getElementById('prevView');
     const nextViewBtn = document.getElementById('nextView');
 
-    // Toggle Side Panel
+
     sidePanelToggle.addEventListener('click', () => {
         sidePanel.classList.toggle('collapsed');
     });
 
-    // Initialize Side Panel Items
+
     function initSidePanel() {
         sidePanelList.innerHTML = '';
         animalsData.forEach((animal, index) => {
@@ -84,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             li.addEventListener('click', () => {
                 currentAnimalIndex = index;
-                currentVideoIndex = 0; // reset video index
+                currentVideoIndex = 0;
                 updateActiveAnimal();
                 renderContent();
             });
@@ -92,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Update active class in side panel
+
     function updateActiveAnimal() {
         const items = sidePanelList.querySelectorAll('.side-animal');
         items.forEach((item, index) => {
@@ -104,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render Main Content
+
     function renderContent() {
         const animal = animalsData[currentAnimalIndex];
 
@@ -115,12 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
         renderThumbnails();
     }
 
-    // Update main video based on current indices
+
     function updateMainVideo() {
         const animal = animalsData[currentAnimalIndex];
         mainVideo.src = animal.videos[currentVideoIndex];
 
-        // Update active thumbnail outline
+
         const thumbs = carouselTrack.querySelectorAll('.carousel-thumbnail');
         thumbs.forEach((thumb, index) => {
             if (index === currentVideoIndex) {
@@ -131,13 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render video thumbnails in carousel
+
     function renderThumbnails() {
         const animal = animalsData[currentAnimalIndex];
         carouselTrack.innerHTML = '';
 
         animal.videos.forEach((videoUrl, index) => {
-            // Extract youtube ID for thumbnail
+
             const videoIdMatch = videoUrl.match(/embed\/([^?]+)/);
             const videoId = videoIdMatch ? videoIdMatch[1] : '';
             const thumbUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
@@ -156,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Carousel Navigation
+
     prevViewBtn.addEventListener('click', () => {
         const animal = animalsData[currentAnimalIndex];
         if (currentVideoIndex > 0) {
@@ -173,7 +211,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initialize Page
+
+    const donateNowBtn = document.getElementById('donateNowBtn');
+    const donationAmountBtn = document.getElementById('donationAmountBtn');
+    const footerDonate = document.querySelector('.footer__donate');
+
+
+    if (donateNowBtn) {
+        donateNowBtn.addEventListener('click', () => {
+            if (typeof window.openDonationPopup === 'function') {
+                window.openDonationPopup();
+            }
+        });
+    }
+
+
+    if (donationAmountBtn) {
+        donationAmountBtn.addEventListener('click', () => {
+            if (typeof window.openCarePopup === 'function') {
+                window.openCarePopup();
+            }
+        });
+    }
+
+
+    if (footerDonate) {
+        footerDonate.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (typeof window.openCarePopup === 'function') {
+                window.openCarePopup();
+            }
+        });
+    }
+
+
     initSidePanel();
     renderContent();
 });

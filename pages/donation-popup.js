@@ -1,4 +1,4 @@
-(function() {
+(function () {
   const carePopupHTML = `
     <div class="care-popup" id="carePopup">
       <div class="care-popup__overlay"></div>
@@ -95,7 +95,7 @@
           <button class="donation-popup__close" type="button" aria-label="Close popup"></button>
         </div>
         <div class="donation-popup__body">
-          <!-- Step 1: Donation Information -->
+
           <div class="donation-popup__step donation-popup__step--active" data-step="1">
             <h3 class="donation-popup__section-title">Donation Information:</h3>
 
@@ -151,7 +151,7 @@
             </div>
           </div>
 
-          <!-- Step 2: Billing Information -->
+
           <div class="donation-popup__step" data-step="2">
             <h3 class="donation-popup__section-title">Billing Information:</h3>
 
@@ -188,7 +188,7 @@
             </div>
           </div>
 
-          <!-- Step 3: Payment Information -->
+
           <div class="donation-popup__step" data-step="3">
             <h3 class="donation-popup__section-title">Payment Information:</h3>
 

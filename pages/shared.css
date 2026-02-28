@@ -124,7 +124,7 @@ a {
     line-height: 1;
 }
 
-/* Header */
+
 .header {
     background-color: var(--color-orange-bg);
 }
@@ -189,7 +189,7 @@ a {
     display: block;
 }
 
-/* Hamburger Menu Button */
+
 .header__burger {
     display: none;
     flex-direction: column;
@@ -226,7 +226,7 @@ a {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Header responsive - 1200px */
+
 @media screen and (max-width: 1200px) {
     .header__container {
         min-height: 90px;
@@ -252,7 +252,7 @@ a {
     }
 }
 
-/* Header responsive - 640px */
+
 @media screen and (max-width: 640px) {
     .header__container {
         min-height: 70px;
@@ -305,7 +305,7 @@ a {
     }
 }
 
-/* Mobile menu overlay */
+
 .header__overlay {
     position: fixed;
     top: 0;
@@ -324,7 +324,7 @@ a {
     visibility: visible;
 }
 
-/* Header responsive - 320px */
+
 @media screen and (max-width: 320px) {
     .header__container {
         min-height: 60px;

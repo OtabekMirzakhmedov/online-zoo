@@ -7,6 +7,7 @@
     <title>Online Zoo | Home</title>
     <link rel="icon" href="../../assets/icons/favicon.png.jpg" type="image/png">
     <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="../donation-popup.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +18,12 @@
             <a href="#" class="header__logo" aria-label="Online Zoo home">
                 <img class="header__logo-img" src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
             </a>
-            <nav class="header__nav" aria-label="Primary">
+            <button class="header__burger" id="burgerMenu" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+            </button>
+            <nav class="header__nav" id="headerNav" aria-label="Primary">
                 <ul class="header__nav-list">
                     <li class="header__nav-item">
                         <a href="../landing/index.html" class="header__nav-link header__nav-link--active">About</a>
@@ -93,8 +99,7 @@
         <section class="info info--work">
             <div class="container info__container">
                 <div class="info__media">
-                    <img class="info__image" src="../../assets/images/howitworks2.png"
-                        alt="Eagles perched on a tree">
+                    <img class="info__image" src="../../assets/images/howitworks2.png" alt="Eagles perched on a tree">
                 </div>
                 <div class="info__content">
                     <h2 class="info__title">How we work</h2>
@@ -122,7 +127,8 @@
                     <span class="donation__label">Quick Donate</span>
                     <div class="donation__input">
                         <span class="donation__currency">$</span>
-                        <input class="donation__field" type="text" placeholder="Donation Amount" aria-label="Donation amount">
+                        <input class="donation__field" type="text" placeholder="Donation Amount"
+                            aria-label="Donation amount">
                         <button class="donation__button" type="button" aria-label="Donate now">
                             <img class="donation__arrow" src="../../assets/icons/icon-arrow-white.svg" alt="">
                         </button>
@@ -144,13 +150,11 @@
                         aria-label="Previous pets">
                         <span class="pets__arrow-icon" aria-hidden="true"></span>
                     </button>
-                    <button class="pets__arrow pets__arrow--next" id="petsNext" type="button"
-                        aria-label="Next pets">
+                    <button class="pets__arrow pets__arrow--next" id="petsNext" type="button" aria-label="Next pets">
                         <span class="pets__arrow-icon" aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="pets__grid" id="petsGrid">
-                    <!-- Cards rendered by script.js -->
                 </div>
                 <a class="pets__cta" href="../animal/index.html">
                     Choose your favorite
@@ -172,11 +176,12 @@
                             <img class="pay-feed__image" src="../../assets/images/payandfeed1.png"
                                 alt="Chimpanzee in the zoo">
                             <div class="pay-feed__content">
-                                <img class="pay-feed__icon-svg" src="../../assets/icons/icon-pay-feed-impact.svg"
-                                    alt="" aria-hidden="true">
+                                <img class="pay-feed__icon-svg" src="../../assets/icons/icon-pay-feed-impact.svg" alt=""
+                                    aria-hidden="true">
                                 <h3 class="pay-feed__item-title">Your donation has an impact</h3>
                                 <p class="pay-feed__item-text">
-                                    Providing our animals with high-quality nutritious diets is just one element of animal
+                                    Providing our animals with high-quality nutritious diets is just one element of
+                                    animal
                                     care at our Zoo. We do all the best so that our animals can eat food similar to
                                     what they might find in their natural habitats while making sure they get the right
                                     mix of nutrients, proteins, and vitamins to be happy and healthy. Please help us
@@ -221,7 +226,8 @@
                             <div class="pay-feed__content">
                                 <img class="pay-feed__icon-svg pay-feed__icon-svg--charity"
                                     src="../../assets/icons/icon-pay-feed-charity.svg" alt="" aria-hidden="true">
-                                <h3 class="pay-feed__item-title">Bring your food charity straight to your favorites pets.</h3>
+                                <h3 class="pay-feed__item-title">Bring your food charity straight to your favorites
+                                    pets.</h3>
                                 <p class="pay-feed__item-text">
                                     After your donation, the animal receives its favorite foods. You can support your
                                     favorite animals or any animal you care about and make a real personal impact.
@@ -324,7 +330,8 @@
                         </div>
                     </article>
 
-                    <article class="care-love__card" tabindex="0" role="link" aria-label="Open Sam and Lora animal page">
+                    <article class="care-love__card" tabindex="0" role="link"
+                        aria-label="Open Sam and Lora animal page">
                         <img class="care-love__card-image" src="../../assets/images/feed5.png"
                             alt="Sam and Lora bald eagles">
                         <div class="care-love__card-body">
@@ -337,6 +344,68 @@
                             </a>
                         </div>
                     </article>
+                </div>
+
+                <div class="care-love__carousel" id="careLoveCarousel">
+                    <div class="care-love__carousel-track" id="careLoveTrack">
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link" aria-label="Open Lucas animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed2.png" alt="Lucas eating panda cake">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        Your $30 could give Lucas a slice of panda cake, made with our secret recipe.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link" aria-label="Open Senja animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed3.png" alt="Senja the Sumatran tiger">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        Your $150 will help to care for Senja, a Sumatran tiger, for three weeks.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link" aria-label="Open Andy animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed4.png" alt="Andy the lemur eating fruit">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        With your support, we can give Andy his favorite fruits. Especially when it's not fruit season in its natural habitat.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link" aria-label="Open Sam and Lora animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed5.png" alt="Sam and Lora bald eagles">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        Sam &amp; Lora have hatched and raised numerous young and will be happy with your help.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="care-love__carousel-dots" id="careLoveDots"></div>
                 </div>
 
                 <a class="care-love__choose" href="../animal/index.html">
@@ -356,16 +425,16 @@
             <div class="footer__top">
                 <div class="footer__brands">
                     <a href="../landing/index.html" class="footer__brand-link" aria-label="Online Zoo home">
-                        <img class="footer__brand-logo footer__brand-logo--zoo" src="../../assets/icons/logo-online-zoo.svg"
-                            alt="Online Zoo">
+                        <img class="footer__brand-logo footer__brand-logo--zoo"
+                            src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
                     </a>
                     <a href="#" class="footer__brand-link" aria-label="Yem Digital">
-                        <img class="footer__brand-logo footer__brand-logo--yem" src="../../assets/icons/logo-yem-digital.svg"
-                            alt="Yem Digital">
+                        <img class="footer__brand-logo footer__brand-logo--yem"
+                            src="../../assets/icons/logo-yem-digital.svg" alt="Yem Digital">
                     </a>
                     <a href="#" class="footer__brand-link" aria-label="RS School">
-                        <img class="footer__brand-logo footer__brand-logo--rs" src="../../assets/icons/logo-rs-school.svg"
-                            alt="RS School">
+                        <img class="footer__brand-logo footer__brand-logo--rs"
+                            src="../../assets/icons/logo-rs-school.svg" alt="RS School">
                     </a>
                 </div>
 

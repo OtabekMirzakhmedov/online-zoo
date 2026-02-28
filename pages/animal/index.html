@@ -7,6 +7,7 @@
     <title>Online Zoo | Zoos</title>
     <link rel="icon" href="../../assets/icons/favicon.png.jpg" type="image/png">
     <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="../donation-popup.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,7 +17,12 @@
             <a href="../../index.html" class="header__logo" aria-label="Online Zoo home">
                 <img class="header__logo-img" src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
             </a>
-            <nav class="header__nav" aria-label="Primary">
+            <button class="header__burger" id="burgerMenu" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+            </button>
+            <nav class="header__nav" id="headerNav" aria-label="Primary">
                 <ul class="header__nav-list">
                     <li class="header__nav-item">
                         <a href="../landing/index.html" class="header__nav-link">About</a>
@@ -53,17 +59,17 @@
 
     <main class="main">
         <div class="zoo-layout">
-            <!-- Left Side Panel Sticky -->
+
             <aside class="side-panel" id="sidePanel">
                 <button class="side-panel__toggle" id="sidePanelToggle" aria-label="Toggle Side Panel">
                     <span></span><span></span><span></span>
                 </button>
                 <ul class="side-panel__list" id="sidePanelList">
-                    <!-- Dynamic Items injected by script.js -->
+
                 </ul>
             </aside>
 
-            <!-- Main Content Area -->
+
             <div class="zoo-content">
                 <h1 class="visually-hidden">Online Zoo</h1>
 
@@ -78,7 +84,7 @@
                         </div>
 
                         <div class="video-container" id="mainVideoContainer">
-                            <!-- Main iframe dynamically changed -->
+
                             <iframe id="mainVideo" src="" title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
@@ -93,7 +99,7 @@
                                 </button>
 
                                 <div class="carousel-track" id="carouselTrack">
-                                    <!-- Dynamic Thumbnails injected here -->
+
                                 </div>
 
                                 <button class="carousel-arrow carousel-arrow--next" id="nextView"
@@ -121,7 +127,7 @@
                         <div class="did-you-know__box">
                             <h2 class="section-title">Did you know?</h2>
                             <p class="did-you-know__text" id="animalFact">
-                                <!-- Dynamic Fact goes here -->
+
                             </p>
                             <a href="../map/index.html" class="btn btn--outline">
                                 <span class="btn__text">View Map</span>
@@ -138,16 +144,16 @@
             <div class="footer__top">
                 <div class="footer__brands">
                     <a href="../landing/index.html" class="footer__brand-link" aria-label="Online Zoo home">
-                        <img class="footer__brand-logo footer__brand-logo--zoo" src="../../assets/icons/logo-online-zoo.svg"
-                            alt="Online Zoo">
+                        <img class="footer__brand-logo footer__brand-logo--zoo"
+                            src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
                     </a>
                     <a href="#" class="footer__brand-link" aria-label="Yem Digital">
-                        <img class="footer__brand-logo footer__brand-logo--yem" src="../../assets/icons/logo-yem-digital.svg"
-                            alt="Yem Digital">
+                        <img class="footer__brand-logo footer__brand-logo--yem"
+                            src="../../assets/icons/logo-yem-digital.svg" alt="Yem Digital">
                     </a>
                     <a href="#" class="footer__brand-link" aria-label="RS School">
-                        <img class="footer__brand-logo footer__brand-logo--rs" src="../../assets/icons/logo-rs-school.svg"
-                            alt="RS School">
+                        <img class="footer__brand-logo footer__brand-logo--rs"
+                            src="../../assets/icons/logo-rs-school.svg" alt="RS School">
                     </a>
                 </div>
 
@@ -189,6 +195,7 @@
         </div>
     </footer>
 
+    <script src="../donation-popup.js"></script>
     <script src="script.js"></script>
 </body>
 

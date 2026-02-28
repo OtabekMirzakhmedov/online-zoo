@@ -830,7 +830,7 @@
   pointer-events: none;
 }
 
-/* Responsive Styles */
+
 @media screen and (max-width: 640px) {
   .donation-popup__container {
     max-width: 95%;
