@@ -1,0 +1,31 @@
+{
+  "name": "online-zoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "remove-comments.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OtabekMirzakhmedov/online-zoo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/OtabekMirzakhmedov/online-zoo/issues"
+  },
+  "homepage": "https://github.com/OtabekMirzakhmedov/online-zoo#readme",
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1"
+  }
+}

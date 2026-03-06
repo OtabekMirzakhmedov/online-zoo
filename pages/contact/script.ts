@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         burgerMenu.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
-        
+
         headerNav.querySelectorAll('.header__nav-link').forEach((link) => {
             link.addEventListener('click', () => {
                 if (headerNav.classList.contains('header__nav--open')) {
