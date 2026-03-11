@@ -266,8 +266,6 @@
   `;
 
   let popup = null;
-  let currentStep = 1;
-  let selectedAmount = null;
 
   function init() {
     document.body.insertAdjacentHTML('beforeend', popupHTML);
@@ -291,7 +289,6 @@
       btn.addEventListener('click', () => {
         amountBtns.forEach(b => b.classList.remove('donation-popup__amount-btn--active'));
         btn.classList.add('donation-popup__amount-btn--active');
-        selectedAmount = btn.dataset.amount;
         otherInput.value = '';
       });
     });
@@ -303,7 +300,6 @@
     otherInput.addEventListener('input', () => {
       if (otherInput.value) {
         amountBtns.forEach(b => b.classList.remove('donation-popup__amount-btn--active'));
-        selectedAmount = otherInput.value;
       }
     });
 
@@ -334,7 +330,6 @@
   }
 
   function goToStep(step) {
-    currentStep = step;
     const steps = popup.querySelectorAll('.donation-popup__step');
     steps.forEach(s => {
       s.classList.remove('donation-popup__step--active');
@@ -356,7 +351,6 @@
       amountBtns.forEach(btn => {
         if (btn.dataset.amount === preselectedAmount) {
           btn.classList.add('donation-popup__amount-btn--active');
-          selectedAmount = preselectedAmount;
         }
       });
     }
@@ -369,7 +363,6 @@
   }
 
   function resetForm() {
-    selectedAmount = null;
     const amountBtns = popup.querySelectorAll('.donation-popup__amount-btn');
     amountBtns.forEach(b => b.classList.remove('donation-popup__amount-btn--active'));
 

@@ -1,4 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { getPets, getFeedback } from '../../src/api';
+import { Pet, Feedback } from '../../src/types';
+import { PaginatedResponse } from '../../src/api';
+
+declare global {
+    interface Window {
+        openCarePopup?: () => void;
+        openDonationPopup?: () => void;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
 
     const burgerMenu = document.getElementById('burgerMenu');
     const headerNav = document.getElementById('headerNav');
@@ -13,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = headerNav.classList.toggle('header__nav--open');
             burgerMenu.classList.toggle('header__burger--active');
             overlay.classList.toggle('header__overlay--visible');
-            burgerMenu.setAttribute('aria-expanded', isOpen);
+            burgerMenu.setAttribute('aria-expanded', String(isOpen));
             document.body.style.overflow = isOpen ? 'hidden' : '';
         };
 
@@ -37,66 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const pets = [
-        {
-            id: 1,
-            name: 'Lucas',
-            title: 'Giant Panda',
-            text: 'Native to central China, giant pandas have a penchant for bamboo.',
-            image: '../../assets/images/pet1.png',
-        },
-        {
-            id: 2,
-            name: 'Andy',
-            title: 'Madagascan Lemur',
-            text: 'Lemurs are tree-dwelling primates found in Madagascar.',
-            image: '../../assets/images/pet2.png',
-            badge: '51 > 33',
-        },
-        {
-            id: 3,
-            name: 'Glen',
-            title: 'Gorilla in Congo',
-            text: 'Forest gorillas live in the tropical forests of Central Africa.',
-            image: '../../assets/images/pet3.png',
-        },
-        {
-            id: 4,
-            name: 'Mike',
-            title: 'Chinese Alligator',
-            text: 'From river basins in China, these small alligators are rare.',
-            image: '../../assets/images/pet4.png'
-        },
-        {
-            id: 5,
-            name: 'Sam & Lora',
-            title: 'West End Bald Eagles',
-            text: 'Soar above rivers and forests, eagles are a sight to see.',
-            image: '../../assets/images/pet5.png'
-        },
-        {
-            id: 6,
-            name: 'Liz',
-            title: 'Australian Koala',
-            text: 'The elevated walkways bring you to eye level with the koalas.',
-            image: '../../assets/images/pet6.png'
-        },
-        {
-            id: 7,
-            name: 'Shake',
-            title: 'African Lion',
-            text: 'Lions roam the savannas and grasslands of Africa in prides.',
-            image: '../../assets/images/pet7.png'
-        },
-        {
-            id: 8,
-            name: 'Serja',
-            title: 'Sumatran Tiger',
-            text: 'A rare tiger from Sumatra’s forests with distinctive stripes.',
-            image: '../../assets/images/pet8.png'
-        },
-    ];
-
     const grid = document.getElementById('petsGrid');
     const prevButton = document.getElementById('petsPrev');
     const nextButton = document.getElementById('petsNext');
@@ -104,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grid) {
         return;
     }
+    grid.innerHTML = '<div class="loader-container"><div class="loader"></div></div>';
 
+    let pets: Pet[] = [];
     let startIndex = 0;
 
     const getVisibleCount = () => {
@@ -114,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderPets = () => {
+        if (pets.length === 0) return;
+
         const visibleCount = getVisibleCount();
         const items = [];
         for (let i = 0; i < visibleCount; i++) {
@@ -122,15 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         grid.innerHTML = items.map((pet) => {
+            const getRandomPetImage = () => {
+                const randomId = Math.floor(Math.random() * 8) + 1;
+                return `../../assets/images/pet${randomId}.png`;
+            };
+            const petImage = getRandomPetImage();
+
             return `
-                <article class="pets-card" data-href="../animal/index.html" tabindex="0" role="link" aria-label="Open ${pet.title}">
+                <article class="pets-card" data-href="../animal/index.html" tabindex="0" role="link" aria-label="Open ${pet.commonName}">
                     <div class="pets-card__media">
-                        <img class="pets-card__image" src="${pet.image}" alt="${pet.title}">
-                        <div class="pets-card__name">${pet.name}</div>
+                        <img class="pets-card__image" src="${petImage}" alt="${pet.commonName}">
+                        <div class="pets-card__name">${pet.name || pet.commonName}</div>
                     </div>
                     <div class="pets-card__body">
-                        <h3 class="pets-card__title">${pet.title}</h3>
-                        <p class="pets-card__text">${pet.text}</p>
+                        <h3 class="pets-card__title">${pet.commonName}</h3>
+                        <p class="pets-card__text">${pet.description || ''}</p>
                         <a class="pets-card__link" href="../animal/index.html">
                             View live cam
                             <img src="../../assets/icons/icon-arrow-white.svg" alt="">
@@ -142,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         grid.querySelectorAll('.pets-card').forEach((card) => {
             card.addEventListener('click', (event) => {
-                const target = event.target;
+                const target = event.target as HTMLElement;
                 if (target.closest('.pets-card__link')) {
                     return;
                 }
@@ -151,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = href;
                 }
             });
-            card.addEventListener('keydown', (event) => {
+            card.addEventListener('keydown', (e: Event) => {
+                const event = e as KeyboardEvent;
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
                     const href = card.getAttribute('data-href');
@@ -165,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
+            if (pets.length === 0) return;
             const visibleCount = getVisibleCount();
             startIndex = (startIndex - visibleCount + pets.length) % pets.length;
             renderPets();
@@ -173,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
+            if (pets.length === 0) return;
             const visibleCount = getVisibleCount();
             startIndex = (startIndex + visibleCount) % pets.length;
             renderPets();
@@ -180,89 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('resize', () => {
-        renderPets();
+        if (pets.length > 0) renderPets();
     });
-
-    renderPets();
-
-    const feedbackCards = [
-        {
-            location: 'New Jersey, June 2020',
-            text: 'I am writing to thank you for your mission is to bring people closer to nature! Like myself, children were very impressed by the opportunity to explore the life of incredible animals in real-time.',
-            author: 'Karen Maithlan',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Toronto, November 2020',
-            text: 'We enjoy the live streams every week because they bring our family closer to wildlife. Children stay engaged, ask smart questions, and better understand how animals live in their natural rhythm.',
-            author: 'Carol Larsen',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'London, February 2021',
-            text: 'This project is a fantastic way to discover wild animals from home and still feel connected to nature. The camera quality is clear, and the educational value is noticeable for every age group.',
-            author: 'C. Stockman',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Amsterdam, June 2020',
-            text: 'Thank you to the team for creating such a thoughtful and reliable wildlife experience online. We can observe behaviors in detail and discuss habitats with children in a way that feels real.',
-            author: 'Tomas Ray',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Berlin, August 2021',
-            text: 'Watching these live feeds has become a regular part of our school activities and nature lessons. Students are focused, curious, and much more interested in animal care and conservation topics.',
-            author: 'Monica Hale',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Chicago, July 2021',
-            text: 'Our family enjoys the streams together because the website is simple and the cameras are stable. The children now talk about ecosystems more often and connect what they see to classroom topics.',
-            author: 'David Wynn',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Oslo, October 2021',
-            text: 'The platform helps us stay connected to wildlife in a calm and meaningful format. It is easy to navigate, rich in visual detail, and very useful for teaching children about animal behavior.',
-            author: 'A. Norberg',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Madrid, October 2021',
-            text: 'I appreciate the educational mission and the quality of work behind every camera view. The children in our class were excited, attentive, and eager to learn more after each session.',
-            author: 'Lara Sanz',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Prague, January 2022',
-            text: 'Stream quality is strong and the overall experience feels carefully designed for learning. It is one of the few websites we revisit every week because it consistently offers meaningful content.',
-            author: 'Jan Novak',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Lisbon, April 2022',
-            text: 'We discovered species we had never seen before and learned how each animal behaves over time. The experience feels calm, informative, and genuinely inspiring for both kids and adults.',
-            author: 'Rui Costa',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Seoul, September 2022',
-            text: 'The interface is simple, fast, and clear, which makes regular viewing very convenient. Thank you for opening this world to everyone and helping families explore nature together online.',
-            author: 'Hana Kim',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        },
-        {
-            location: 'Dublin, December 2022',
-            text: 'This is a brilliant project with practical educational value and excellent presentation. I recommend it to anyone who wants to learn about wildlife through real-time observation and guided discovery.',
-            author: 'Paul Byrne',
-            quoteIcon: '../../assets/icons/icon-users-quote.svg'
-        }
-    ];
 
     const usersCardsGrid = document.getElementById('usersCardsGrid');
     const usersPrevButton = document.getElementById('usersPrev');
     const usersNextButton = document.getElementById('usersNext');
+
+    if (usersCardsGrid) {
+        usersCardsGrid.innerHTML = '<div class="loader-container"><div class="loader"></div></div>';
+    }
+
+    let feedbackCards: Feedback[] = [];
     let feedbackStartIndex = 0;
 
     const getFeedbackColumns = () => {
@@ -280,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderFeedbackCards = () => {
-        if (!usersCardsGrid) {
+        if (!usersCardsGrid || feedbackCards.length === 0) {
             return;
         }
 
@@ -295,10 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         usersCardsGrid.innerHTML = visibleCards.map((card) => {
             return `
                 <article class="users-opinion__card">
-                    <img class="users-opinion__quote" src="${card.quoteIcon}" alt="" aria-hidden="true">
-                    <h3 class="users-opinion__card-title">${card.location}</h3>
+                    <img class="users-opinion__quote" src="../../assets/icons/icon-users-quote.svg" alt="" aria-hidden="true">
+                    <h3 class="users-opinion__card-title">${card.city}, ${card.month} ${card.year}</h3>
                     <p class="users-opinion__card-text">${card.text}</p>
-                    <p class="users-opinion__card-author">${card.author}</p>
+                    <p class="users-opinion__card-author">${card.name}</p>
                 </article>
             `;
         }).join('');
@@ -306,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (usersPrevButton) {
         usersPrevButton.addEventListener('click', () => {
+            if (feedbackCards.length === 0) return;
             const step = getFeedbackVisibleCount();
             feedbackStartIndex = (feedbackStartIndex - step + feedbackCards.length) % feedbackCards.length;
             renderFeedbackCards();
@@ -314,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (usersNextButton) {
         usersNextButton.addEventListener('click', () => {
+            if (feedbackCards.length === 0) return;
             const step = getFeedbackVisibleCount();
             feedbackStartIndex = (feedbackStartIndex + step) % feedbackCards.length;
             renderFeedbackCards();
@@ -321,10 +216,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('resize', () => {
-        renderFeedbackCards();
+        if (feedbackCards.length > 0) renderFeedbackCards();
     });
 
-    renderFeedbackCards();
+    try {
+        const [petsResponse, feedbackResponse] = await Promise.all([
+            getPets(),
+            getFeedback()
+        ]);
+
+        const pRes = petsResponse as PaginatedResponse<Pet[]>;
+        if (petsResponse && !pRes.error) {
+            pets = pRes.data || (petsResponse as Pet[]);
+            console.log('--- Fetched Pets Data ---', pets);
+            renderPets();
+        } else {
+            throw new Error('Pets API Error');
+        }
+
+        const fRes = feedbackResponse as PaginatedResponse<Feedback[]>;
+        if (feedbackResponse && !fRes.error) {
+            feedbackCards = fRes.data || (feedbackResponse as Feedback[]);
+            renderFeedbackCards();
+        } else {
+            throw new Error('Feedback API Error');
+        }
+
+    } catch (error) {
+        console.error('Failed to load API data:', error);
+        const errorHtml = '<div class="error-message">Something went wrong. Please, refresh the page</div>';
+        if (grid) grid.innerHTML = errorHtml;
+        if (usersCardsGrid) usersCardsGrid.innerHTML = errorHtml;
+    }
 
 
     const donationButton = document.querySelector('.donation__button');
@@ -362,13 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.care-love__card').forEach((card) => {
         card.addEventListener('click', (event) => {
-            const target = event.target;
-            if (target.closest('.care-love__feed-link')) {
+            const target = event.target as HTMLElement;
+            if (target && target.closest('.care-love__feed-link')) {
                 return;
             }
             window.location.href = '../animal/index.html';
         });
-        card.addEventListener('keydown', (event) => {
+        card.addEventListener('keydown', (e: Event) => {
+            const event = e as KeyboardEvent;
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
                 window.location.href = '../animal/index.html';
@@ -403,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        const goToSlide = (index) => {
+        const goToSlide = (index: number) => {
             currentSlide = index;
             careLoveTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
             updateDots();

@@ -125,6 +125,57 @@ a {
 }
 
 
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--color-orange);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin: 40px auto;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    grid-column: 1 / -1;
+}
+
+.error-message {
+    color: #D32F2F;
+    background-color: #FFEBEE;
+    border: 1px solid #FFCDD2;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    width: fit-content;
+    min-width: 300px;
+    max-width: 90%;
+    grid-column: 1 / -1;
+}
+
 .header {
     background-color: var(--color-orange-bg);
 }

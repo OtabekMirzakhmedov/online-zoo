@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = headerNav.classList.toggle('header__nav--open');
             burgerMenu.classList.toggle('header__burger--active');
             overlay.classList.toggle('header__overlay--visible');
-            burgerMenu.setAttribute('aria-expanded', isOpen);
+            burgerMenu.setAttribute('aria-expanded', String(isOpen));
             document.body.style.overflow = isOpen ? 'hidden' : '';
         };
 
@@ -104,12 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextViewBtn = document.getElementById('nextView');
 
 
-    sidePanelToggle.addEventListener('click', () => {
-        sidePanel.classList.toggle('collapsed');
-    });
+    if (sidePanelToggle && sidePanel) {
+        sidePanelToggle.addEventListener('click', () => {
+            sidePanel.classList.toggle('collapsed');
+        });
+    }
 
 
     function initSidePanel() {
+        if (!sidePanelList) return;
         sidePanelList.innerHTML = '';
         animalsData.forEach((animal, index) => {
             const li = document.createElement('li');
@@ -132,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function updateActiveAnimal() {
+        if (!sidePanelList) return;
         const items = sidePanelList.querySelectorAll('.side-animal');
         items.forEach((item, index) => {
             if (index === currentAnimalIndex) {
@@ -146,8 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderContent() {
         const animal = animalsData[currentAnimalIndex];
 
-        animalTitle.textContent = animal.title;
-        animalFact.textContent = animal.fact;
+        if (animalTitle) animalTitle.textContent = animal.title;
+        if (animalFact) animalFact.textContent = animal.fact;
 
         updateMainVideo();
         renderThumbnails();
@@ -156,22 +160,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateMainVideo() {
         const animal = animalsData[currentAnimalIndex];
-        mainVideo.src = animal.videos[currentVideoIndex];
+        if (mainVideo) {
+            (mainVideo as HTMLIFrameElement).src = animal.videos[currentVideoIndex];
+        }
 
-
-        const thumbs = carouselTrack.querySelectorAll('.carousel-thumbnail');
-        thumbs.forEach((thumb, index) => {
-            if (index === currentVideoIndex) {
-                thumb.classList.add('active');
-            } else {
-                thumb.classList.remove('active');
-            }
-        });
+        if (carouselTrack) {
+            const thumbs = carouselTrack.querySelectorAll('.carousel-thumbnail');
+            thumbs.forEach((thumb, index) => {
+                if (index === currentVideoIndex) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
     }
 
 
     function renderThumbnails() {
         const animal = animalsData[currentAnimalIndex];
+        if (!carouselTrack) return;
         carouselTrack.innerHTML = '';
 
         animal.videos.forEach((videoUrl, index) => {
@@ -195,21 +203,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    prevViewBtn.addEventListener('click', () => {
-        const animal = animalsData[currentAnimalIndex];
-        if (currentVideoIndex > 0) {
-            currentVideoIndex--;
-            updateMainVideo();
-        }
-    });
+    if (prevViewBtn) {
+        prevViewBtn.addEventListener('click', () => {
+            if (currentVideoIndex > 0) {
+                currentVideoIndex--;
+                updateMainVideo();
+            }
+        });
+    }
 
-    nextViewBtn.addEventListener('click', () => {
-        const animal = animalsData[currentAnimalIndex];
-        if (currentVideoIndex < animal.videos.length - 1) {
-            currentVideoIndex++;
-            updateMainVideo();
-        }
-    });
+    if (nextViewBtn) {
+        nextViewBtn.addEventListener('click', () => {
+            const animal = animalsData[currentAnimalIndex];
+            if (currentVideoIndex < animal.videos.length - 1) {
+                currentVideoIndex++;
+                updateMainVideo();
+            }
+        });
+    }
 
 
     const donateNowBtn = document.getElementById('donateNowBtn');
