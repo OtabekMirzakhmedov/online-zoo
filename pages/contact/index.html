@@ -54,6 +54,7 @@
                     <img class="header__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
                 </a>
             </div>
+            <div class="auth-ui-container" id="userProfileContainer"></div>
         </div>
     </header>
 
@@ -169,6 +170,10 @@
 
     <script type="module" src="../donation-popup.ts"></script>
     <script type="module" src="script.ts"></script>
+    <script type="module">
+        import { initAuthUI } from "../auth-ui.ts";
+        initAuthUI();
+    </script>
 </body>
 
 </html>

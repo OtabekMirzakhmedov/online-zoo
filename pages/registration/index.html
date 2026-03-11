@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Zoo | Registration</title>
+    <link rel="stylesheet" href="../shared.css">
+    <style>
+        .auth-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f1f3f2;
+            color: var(--color-text-main);
+        }
+        .auth-box {
+            background-color: var(--color-white);
+            padding: 40px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .auth-title {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 500;
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .auth-input {
+            padding: 10px;
+            border: 1px solid var(--color-orange);
+            background-color: var(--color-white);
+            color: var(--color-text-main);
+            border-radius: 3px;
+            font-family: inherit;
+        }
+        .auth-btn {
+            margin-top: 10px;
+            width: 100%;
+        }
+        .auth-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--color-orange);
+            text-decoration: underline;
+        }
+        .auth-link:hover {
+            color: var(--color-orange-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1 class="auth-title">Registration</h1>
+            <form class="auth-form" id="registerForm">
+                <input type="text" class="auth-input" placeholder="Full Name" required>
+                <input type="email" class="auth-input" placeholder="Email" required>
+                <input type="password" class="auth-input" placeholder="Password" required>
+                <!-- Just redirect to sign in for this mock -->
+                <a href="../signin/index.html" class="btn btn--primary auth-btn">
+                    <span class="btn__text">Register</span>
+                </a>
+            </form>
+            <a href="../signin/index.html" class="auth-link">Already have an account? Sign in</a>
+        </div>
+    </div>
+    <script type="module" src="script.ts"></script>
+</body>
+</html>
