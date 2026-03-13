@@ -1108,3 +1108,129 @@
     font-size: 14px;
   }
 }
+
+
+
+
+.donation-popup__next-btn:disabled {
+  background: #A4A8AE;
+  border-color: #A4A8AE;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.donation-popup__next-btn--complete:disabled {
+  background: #c0c4cb;
+  border-color: #c0c4cb;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+.donation-popup__error {
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  color: #D93025;
+  margin-top: 4px;
+  display: block;
+}
+
+
+.donation-popup__form-input--error {
+  border-color: #D93025;
+}
+
+
+.donation-popup__other-input-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.donation-popup__currency-sign {
+  position: absolute;
+  left: 14px;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333B41;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.donation-popup__other-input {
+  padding-left: 30px !important;
+  width: 200px;
+  height: 65px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  color: #333B41;
+  outline: none;
+}
+
+.donation-popup__other-input:focus {
+  border-color: #00A092;
+}
+
+
+.donation-popup__form-input--half {
+  max-width: 200px;
+}
+
+
+.donation-notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  padding: 18px 60px 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  animation: slideInTop 0.35s ease;
+}
+
+.donation-notification--success {
+  background: #00A092;
+  color: #fff;
+}
+
+.donation-notification--error {
+  background: #D93025;
+  color: #fff;
+}
+
+.donation-notification__message {
+  flex: 1;
+}
+
+.donation-notification__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.donation-notification__close:hover {
+  opacity: 0.8;
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
