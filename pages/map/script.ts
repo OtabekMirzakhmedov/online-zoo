@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = headerNav.classList.toggle('header__nav--open');
             burgerMenu.classList.toggle('header__burger--active');
             overlay.classList.toggle('header__overlay--visible');
-            burgerMenu.setAttribute('aria-expanded', isOpen);
+            burgerMenu.setAttribute('aria-expanded', String(isOpen));
             document.body.style.overflow = isOpen ? 'hidden' : '';
         };
 
