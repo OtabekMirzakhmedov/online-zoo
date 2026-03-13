@@ -1,6 +1,6 @@
 import { Pet, Feedback, Camera, DonationPayload } from './types';
 
-const BASE_URL = 'https:
+const BASE_URL = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod';
 
 export class ApiError extends Error {
     constructor(public status: number, message: string) {

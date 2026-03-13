@@ -9,14 +9,14 @@ let currentVideoIndex = 0;
 
 
 const fallbacks: Record<string, string[]> = {
-    '1': ['https://www.youtube.com/embed/Pj1EqwE1K7Y', 'https:
-    '2': ['https://www.youtube.com/embed/14wzP_85J2s', 'https:
-    '3': ['https://www.youtube.com/embed/rgXwE1GivIQ', 'https:
-    '4': ['https://www.youtube.com/embed/p1o1tJqG_fU', 'https:
+    '1': ['https://www.youtube.com/embed/Pj1EqwE1K7Y', 'https://www.youtube.com/embed/d-fnvQVFqqQ'],
+    '2': ['https://www.youtube.com/embed/14wzP_85J2s', 'https://www.youtube.com/embed/B2WTfBkCvwk'],
+    '3': ['https://www.youtube.com/embed/rgXwE1GivIQ', 'https://www.youtube.com/embed/aBmjXsGkQZY'],
+    '4': ['https://www.youtube.com/embed/p1o1tJqG_fU', 'https://www.youtube.com/embed/pTOFMkgkDQ8'],
 };
 
 function getVideosForPet(petId: number): string[] {
-    return fallbacks[String(petId)] || ['https:
+    return fallbacks[String(petId)] || ['https://www.youtube.com/embed/Pj1EqwE1K7Y'];
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!leafletMap && (window as any).L) {
             
             leafletMap = (window as any).L.map('mapContainer').setView([0, 0], 2);
-            (window as any).L.tileLayer('https:
+            (window as any).L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap contributors'
             }).addTo(leafletMap);
             
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         videos.forEach((videoUrl, index) => {
             const videoIdMatch = videoUrl.match(/embed\/([^?]+)/);
             const videoId = videoIdMatch ? videoIdMatch[1] : '';
-            const thumbUrl = `https:
+            const thumbUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
 
             const img = document.createElement('img');
             img.src = thumbUrl;
