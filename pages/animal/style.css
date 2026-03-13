@@ -21,14 +21,16 @@
 
 
 .side-panel {
-    width: 260px;
+    width: 220px;
+    height: 850px;
+    top: 110px;
     background-color: var(--color-navy, #2C1B47);
     color: var(--color-white, #fff);
     position: sticky;
-    top: 0;
-    height: 100vh;
-    padding: 20px 0;
-    overflow-y: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     transition: width 0.3s ease;
     z-index: 10;
 }
@@ -42,26 +44,75 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.side-panel__toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: #fff;
-    transition: 0.3s;
+.toggle-live {
+    background-color: var(--color-orange, #E66A1E);
+    color: #fff;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 0 4px 4px 0;
+}
+
+.toggle-arrows {
+    color: #fff;
+    font-size: 24px;
+    padding-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.side-panel.collapsed .toggle-live {
+    padding: 10px 5px;
+}
+
+.side-panel.collapsed .toggle-live span {
+    display: none;
+}
+
+.side-panel.collapsed .toggle-arrows {
+    transform: scaleX(-1);
+    padding-right: 5px;
+}
+
+.side-panel__list-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
 }
 
 .side-panel__list {
     list-style: none;
     padding: 0;
     margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+.side-panel__arrow-down {
+    text-align: center;
+    padding: 24px 0;
+    background: var(--color-navy, #2C1B47);
+    cursor: pointer;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: auto;
+    transition: background-color 0.2s;
+}
+
+.side-panel__arrow-down:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .side-animal {
@@ -70,27 +121,48 @@
     padding: 15px 20px;
     cursor: pointer;
     transition: background-color 0.2s;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .side-animal:hover,
 .side-animal.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
 }
 
 .side-animal.active {
-    border-left: 4px solid var(--color-orange, #FF7B00);
-    padding-left: 16px;
+    border-left: none;
+    padding-left: 20px;
+}
+
+.side-animal__icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 15px;
+    transition: all 0.3s ease;
 }
 
 .side-animal__icon {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-    flex-shrink: 0;
+    background-color: var(--color-orange, #E66A1E);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: background-color 0.3s ease;
+}
+
+.side-animal.active .side-animal__icon {
+    background-color: #fff;
 }
 
 .side-animal__info {
@@ -100,11 +172,18 @@
 .side-panel.collapsed .side-animal__info {
     opacity: 0;
     width: 0;
+    display: none;
 }
 
 .side-animal__name {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #fff;
+    font-weight: 400;
+}
+
+.side-animal.active .side-animal__name {
+    font-weight: 600;
 }
 
 
@@ -242,6 +321,124 @@
 }
 
 
+
+.did-you-know {
+    padding-bottom: 100px;
+}
+
+.did-you-know__top-card {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title--cyan {
+    color: #1A9F9F; 
+    margin-bottom: 24px;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.did-you-know__short-text {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333333;
+}
+
+
+.animal-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.animal-details__props {
+    flex: 1;
+    position: relative;
+}
+
+.props-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.props-list__item {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.props-list__label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 130%;
+    color: #000000;
+    width: 260px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.props-list__val {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: #333333;
+    vertical-align: middle;
+}
+
+.btn-text-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-orange, #E66A1E);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.btn-text-arrow:hover {
+    color: var(--color-orange-hover, #D5540E);
+}
+
+.animal-details__image-wrapper {
+    flex-shrink: 0;
+    width: 440px;
+    height: 440px;
+}
+
+.animal-details__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    opacity: 1;
+}
+
+.animal-details__long-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #333333;
+    width: 100%;
+}
+
 .did-you-know__box {
     background-color: #fff;
     padding: 40px;
@@ -306,5 +503,44 @@
 
     .side-animal__info {
         display: none;
+    }
+
+    
+    .did-you-know__top-card {
+        padding: 40px 20px;
+    }
+
+    .animal-details {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .animal-details__image-wrapper {
+        width: 100%;
+        max-width: 440px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .props-list__label {
+        width: 150px;
+        font-size: 18px;
+    }
+
+    .props-list__val {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .props-list__label {
+        width: 120px;
+        font-size: 16px;
+    }
+    .props-list__val {
+        font-size: 12px;
+    }
+    .section-title--cyan {
+        font-size: 28px;
     }
 }

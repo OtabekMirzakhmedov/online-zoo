@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../shared.css">
     <link rel="stylesheet" href="../donation-popup.css">
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 
 <body>
@@ -63,11 +65,22 @@
 
             <aside class="side-panel" id="sidePanel">
                 <button class="side-panel__toggle" id="sidePanelToggle" aria-label="Toggle Side Panel">
-                    <span></span><span></span><span></span>
+                    <div class="toggle-live">
+                        <span>LIVE</span>
+                        <svg class="toggle-live-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <div class="toggle-arrows">&laquo;</div>
                 </button>
-                <ul class="side-panel__list" id="sidePanelList">
+                <div class="side-panel__list-wrapper">
+                    <ul class="side-panel__list" id="sidePanelList">
 
-                </ul>
+                    </ul>
+                </div>
+                <div class="side-panel__arrow-down" id="sidePanelScrollDown" aria-label="Scroll Down">
+                    <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.34091 0L0 1.36504L7.5 9L15 1.36504L13.6591 0L7.5 6.26992L1.34091 0Z" fill="white"/>
+                    </svg>
+                </div>
             </aside>
 
 
@@ -125,15 +138,71 @@
 
                 <section class="did-you-know">
                     <div class="container did-you-know__container">
-                        <div class="did-you-know__box">
-                            <h2 class="section-title">Did you know?</h2>
-                            <p class="did-you-know__text" id="animalFact">
-
+                        
+                        
+                        <div class="did-you-know__top-card" id="didYouKnowTop">
+                            <h2 class="section-title section-title--cyan">DID YOU KNOW?</h2>
+                            <p class="did-you-know__short-text" id="animalShortFact">
+                                
                             </p>
-                            <a href="../map/index.html" class="btn btn--outline">
-                                <span class="btn__text">View Map</span>
-                            </a>
                         </div>
+
+                        
+                        <div class="animal-details" id="animalDetailsBlock">
+                            
+                            
+                            <div class="animal-details__props">
+                                <ul class="props-list" id="animalPropsList">
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Common name:</span>
+                                        <span class="props-list__val" id="valCommonName"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Scientific name:</span>
+                                        <span class="props-list__val" id="valScientificName"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Type:</span>
+                                        <span class="props-list__val" id="valType"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Size:</span>
+                                        <span class="props-list__val" id="valSize"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Diet:</span>
+                                        <span class="props-list__val" id="valDiet"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Habitat:</span>
+                                        <span class="props-list__val" id="valHabitat"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Range:</span>
+                                        <span class="props-list__val" id="valRange"></span>
+                                        <button class="btn-text-arrow" id="viewMapInlineBtn" aria-label="View Map">
+                                            VIEW MAP
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12H19" stroke="#E66A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 5L19 12L12 19" stroke="#E66A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            
+                            <div class="animal-details__image-wrapper">
+                                <img src="" alt="" class="animal-details__img" id="animalDetailImg">
+                            </div>
+
+                        </div>
+
+                        
+                        <div class="animal-details__long-text">
+                            <p id="animalLongText"></p>
+                        </div>
+
                     </div>
                 </section>
             </div>
@@ -196,6 +265,21 @@
         </div>
     </footer>
 
+    
+    <div class="map-modal-overlay" id="mapModalOverlay">
+        <div class="map-modal" id="mapModal">
+            <button class="map-modal__close" id="mapModalClose" aria-label="Close Map">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#333B41"/>
+                </svg>
+            </button>
+            <div id="mapContainer" class="map-container"></div>
+        </div>
+    </div>
+
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
     <script type="module" src="../donation-popup.ts"></script>
     <script type="module" src="script.ts"></script>
     <script type="module">

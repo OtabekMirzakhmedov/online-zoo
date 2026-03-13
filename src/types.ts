@@ -1,7 +1,7 @@
-// src/types.ts
 
-// Since the Swagger spec wasn't highly specific, these types are inferred
-// from the actual payloads and typical requirements.
+
+
+
 
 export interface Pet {
     id: number;
@@ -12,7 +12,7 @@ export interface Pet {
     food: string;
     diet: string;
     weight: string;
-    // Add other fields as discovered (e.g., origin, habitat, facts array)
+    
 }
 
 export interface Feedback {
@@ -48,4 +48,6 @@ export interface DonationPayload {
     email: string;
     amount: number;
     petId: number;
+    petName?: string;
+    recurring?: boolean;
 }
