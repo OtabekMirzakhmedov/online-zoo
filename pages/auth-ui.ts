@@ -1,15 +1,15 @@
-// Shared authentication and user profile UI script
+
 
 export function initAuthUI() {
     const userContainer = document.getElementById('userProfileContainer');
     if (!userContainer) return;
 
-    // Check auth state
+    
     const userStr = localStorage.getItem('user');
     const user = userStr ? JSON.parse(userStr) : null;
 
     if (user) {
-        // Logged In State
+        
         userContainer.innerHTML = `
             <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="user-profile__name">${user.name}</span>
@@ -35,7 +35,7 @@ export function initAuthUI() {
         }
 
     } else {
-        // Logged Out State
+        
         userContainer.innerHTML = `
             <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                 <div class="user-profile__icon-wrapper">
@@ -49,7 +49,7 @@ export function initAuthUI() {
         `;
     }
 
-    // Toggle popup
+    
     const userProfileBtn = document.getElementById('userProfileBtn');
     const userPopup = document.getElementById('userPopup');
 
@@ -61,7 +61,7 @@ export function initAuthUI() {
             userPopup.classList.toggle('user-popup--visible');
         });
 
-        // Close when clicking outside
+        
         document.addEventListener('click', (e) => {
             if (!userContainer.contains(e.target as Node)) {
                 userProfileBtn.setAttribute('aria-expanded', 'false');

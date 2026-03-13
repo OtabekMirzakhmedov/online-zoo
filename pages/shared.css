@@ -178,6 +178,9 @@ a {
 
 .header {
     background-color: var(--color-orange-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header__container {
@@ -789,7 +792,7 @@ a {
     }
 }
 
-/* Auth UI Styles */
+
 .auth-ui-container { position: relative; display: flex; align-items: center; margin-left: 20px; }
 .user-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--color-white); }
 .user-profile:hover { opacity: 0.8; }
