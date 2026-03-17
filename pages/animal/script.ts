@@ -192,7 +192,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             sideLoader.remove();
             mainLoader.remove();
-            if (sidePanelList) showError(sidePanelList);
+            const sidePanel = document.getElementById('sidePanel');
+            if (sidePanel) showError(sidePanel);
             const contentDir = document.querySelector('.zoo-content');
             if (contentDir) showError(contentDir as HTMLElement);
         }
