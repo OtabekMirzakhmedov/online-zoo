@@ -1,4 +1,4 @@
-
+import userIcon from '../assets/icons/icon-user.svg';
 
 export function initAuthUI() {
     const userContainer = document.getElementById('userProfileContainer');
@@ -14,7 +14,7 @@ export function initAuthUI() {
             <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="user-profile__name">${user.name}</span>
                 <div class="user-profile__icon-wrapper">
-                    <img class="user-profile__icon" src="../../assets/icons/icon-user.svg" alt="User profile">
+                    <img class="user-profile__icon" src="${userIcon}" alt="User profile">
                 </div>
             </div>
             <div class="user-popup" id="userPopup">
@@ -39,7 +39,7 @@ export function initAuthUI() {
         userContainer.innerHTML = `
             <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                 <div class="user-profile__icon-wrapper">
-                    <img class="user-profile__icon" src="../../assets/icons/icon-user.svg" alt="User profile">
+                    <img class="user-profile__icon" src="${userIcon}" alt="User profile">
                 </div>
             </div>
             <div class="user-popup" id="userPopup">
