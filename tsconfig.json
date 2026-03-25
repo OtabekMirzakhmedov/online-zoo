@@ -15,10 +15,20 @@
     "esModuleInterop": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@contexts/*": ["src/contexts/*"]
+    }
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.tsx",
     "pages/**/*.ts",
     "vite.config.ts",
     "vite-env.d.ts"
