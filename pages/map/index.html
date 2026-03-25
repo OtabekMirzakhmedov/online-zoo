@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Zoo | Map</title>
+    <link rel="icon" href="../../assets/icons/favicon.png.jpg" type="image/png">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="../donation-popup.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="../landing/index.html" class="header__logo" aria-label="Online Zoo home">
+                <img class="header__logo-img" src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+            </a>
+            <button class="header__burger" id="burgerMenu" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+            </button>
+            <nav class="header__nav" id="headerNav" aria-label="Primary">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="../landing/index.html" class="header__nav-link">About</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../map/index.html" class="header__nav-link header__nav-link--active">Map</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link">Zoos</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../contact/index.html" class="header__nav-link">Contact us</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project"
+                            class="header__nav-link header__nav-link--design" target="_blank"
+                            rel="noreferrer">Design</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__social" aria-label="Social links">
+                <a class="header__social-link" href="#" aria-label="YouTube">
+                    <img class="header__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Instagram">
+                    <img class="header__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Facebook">
+                    <img class="header__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                </a>
+            </div>
+            <div class="auth-ui-container" id="userProfileContainer"></div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="page page--map">
+            <div class="container container--map">
+                <h1 class="map-title">Find where are the animals live</h1>
+                <div class="map-wrapper">
+                    <img class="map-image" src="../../assets/images/map/map.svg" alt="Interactive World Map">
+
+                    <a href="../animal/index.html" class="map-pin map-pin--eagle" aria-label="Eagle"
+                        style="top: 59.21%; left: 15.22%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Eagle.svg" alt="Eagle">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Eagles</span>
+                            <span class="map-pin__tooltip-subtitle">North America</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--alligator" aria-label="Alligator"
+                        style="top: 60.64%; left: 24.11%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Alligator.svg" alt="Alligator">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Alligators</span>
+                            <span class="map-pin__tooltip-subtitle">North America</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--gorilla" aria-label="Gorilla"
+                        style="top: 65.79%; left: 44.38%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Gorilla.svg" alt="Gorilla">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Gorillas</span>
+                            <span class="map-pin__tooltip-subtitle">South America</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--lion" aria-label="Lion"
+                        style="top: 68.31%; left: 52.63%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Lion.svg" alt="Lion">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Lions</span>
+                            <span class="map-pin__tooltip-subtitle">Africa</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--lemur" aria-label="Lemur"
+                        style="top: 81.47%; left: 59.95%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Lemur.svg" alt="Lemur">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Lemurs</span>
+                            <span class="map-pin__tooltip-subtitle">Africa</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--coala" aria-label="Koala"
+                        style="top: 54.39%; left: 71.12%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Coala.svg" alt="Koala">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Koalas</span>
+                            <span class="map-pin__tooltip-subtitle">Asia</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--panda" aria-label="Panda"
+                        style="top: 71.71%; left: 75.60%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/Panda.svg" alt="Panda">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Pandas</span>
+                            <span class="map-pin__tooltip-subtitle">Asia</span>
+                        </div>
+                    </a>
+
+                    <a href="../animal/index.html" class="map-pin map-pin--tiger" aria-label="Tiger"
+                        style="top: 84.21%; left: 84.92%;">
+                        <div class="map-pin__icon-wrap">
+                            <img class="map-pin__animal" src="../../assets/images/map/tiger.svg" alt="Tiger">
+                        </div>
+                        <div class="map-pin__tooltip">
+                            <span class="map-pin__tooltip-title">Tigers</span>
+                            <span class="map-pin__tooltip-subtitle">Oceania</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__top">
+                <div class="footer__brands">
+                    <a href="../landing/index.html" class="footer__brand-link" aria-label="Online Zoo home">
+                        <img class="footer__brand-logo footer__brand-logo--zoo"
+                            src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="Yem Digital">
+                        <img class="footer__brand-logo footer__brand-logo--yem"
+                            src="../../assets/icons/logo-yem-digital.svg" alt="Yem Digital">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="RS School">
+                        <img class="footer__brand-logo footer__brand-logo--rs"
+                            src="../../assets/icons/logo-rs-school.svg" alt="RS School">
+                    </a>
+                </div>
+
+                <nav class="footer__nav" aria-label="Footer navigation">
+                    <ul class="footer__nav-list">
+                        <li><a class="footer__nav-link" href="../landing/index.html">About</a></li>
+                        <li><a class="footer__nav-link" href="../map/index.html">Map</a></li>
+                        <li><a class="footer__nav-link" href="../animal/index.html">Zoos</a></li>
+                        <li><a class="footer__nav-link" href="../contact/index.html">Contact us</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#" class="footer__donate">
+                    Donate for volunteers
+                    <span class="footer__donate-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="footer__divider" aria-hidden="true"></div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyrights">
+                    <span class="footer__copyright">© 2021 DinaK</span>
+                    <span class="footer__copyright">© Yem Digital</span>
+                    <span class="footer__copyright">© RSSchool</span>
+                </div>
+                <div class="footer__social" aria-label="Social links">
+                    <a class="footer__social-link" href="#" aria-label="YouTube">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Instagram">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Facebook">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../donation-popup.ts"></script>
+    <script type="module" src="script.ts"></script>
+    <script type="module">
+        import { initAuthUI } from "../auth-ui.ts";
+        initAuthUI();
+    </script>
+</body>
+
+</html>

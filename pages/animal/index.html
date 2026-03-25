@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Zoo | Zoos</title>
+    <link rel="icon" href="../../assets/icons/favicon.png.jpg" type="image/png">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="../donation-popup.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="../../index.html" class="header__logo" aria-label="Online Zoo home">
+                <img class="header__logo-img" src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+            </a>
+            <button class="header__burger" id="burgerMenu" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+            </button>
+            <nav class="header__nav" id="headerNav" aria-label="Primary">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="../landing/index.html" class="header__nav-link">About</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../map/index.html" class="header__nav-link">Map</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link header__nav-link--active">Zoos</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../contact/index.html" class="header__nav-link">Contact us</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project"
+                            class="header__nav-link header__nav-link--design" target="_blank"
+                            rel="noreferrer">Design</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__social" aria-label="Social links">
+                <a class="header__social-link" href="#" aria-label="YouTube">
+                    <img class="header__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Instagram">
+                    <img class="header__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Facebook">
+                    <img class="header__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                </a>
+            </div>
+            <div class="auth-ui-container" id="userProfileContainer"></div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="zoo-layout">
+
+            <aside class="side-panel" id="sidePanel">
+                <button class="side-panel__toggle" id="sidePanelToggle" aria-label="Toggle Side Panel">
+                    <div class="toggle-live">
+                        <span>LIVE</span>
+                        <svg class="toggle-live-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <div class="toggle-arrows">&laquo;</div>
+                </button>
+                <div class="side-panel__list-wrapper">
+                    <ul class="side-panel__list" id="sidePanelList">
+
+                    </ul>
+                </div>
+                <div class="side-panel__arrow-down" id="sidePanelScrollDown" aria-label="Scroll Down">
+                    <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.34091 0L0 1.36504L7.5 9L15 1.36504L13.6591 0L7.5 6.26992L1.34091 0Z" fill="white"/>
+                    </svg>
+                </div>
+            </aside>
+
+
+            <div class="zoo-content">
+                <h1 class="visually-hidden">Online Zoo</h1>
+
+                <section class="live-cams">
+                    <div class="container live-cams__container">
+                        <div class="live-cams__header">
+                            <h3 class="animal-title" id="animalTitle">Live Panda Cams</h3>
+                            <button class="btn btn--primary" id="donateNowBtn"
+                                style="grid-column: 3; justify-self: end; width: 240px; height: 74px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; gap: 12px;">
+                                <span class="btn__text">Donate Now</span>
+                            </button>
+                        </div>
+
+                        <div class="video-container" id="mainVideoContainer">
+
+                            <iframe id="mainVideo" src="" title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+
+                        <div class="more-views">
+                            <h4 class="more-views__title">More Live Views</h4>
+                            <div class="more-views__carousel" aria-label="Live views carousel">
+                                <button class="carousel-arrow carousel-arrow--prev" id="prevView"
+                                    aria-label="Previous View">
+                                    <span class="carousel-arrow-icon"></span>
+                                </button>
+
+                                <div class="carousel-track" id="carouselTrack">
+
+                                </div>
+
+                                <button class="carousel-arrow carousel-arrow--next" id="nextView"
+                                    aria-label="Next View">
+                                    <span class="carousel-arrow-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="pay-feed">
+                    <div class="container pay-feed__container">
+                        <h2 class="section-title">Pay and Feed</h2>
+                        <p class="pay-feed__text">You can choose a donation amount for our beloved pets</p>
+                        <button class="btn btn--outline" id="donationAmountBtn">
+                            <span class="btn__text">$ Donation Amount</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="did-you-know">
+                    <div class="container did-you-know__container">
+                        
+                        
+                        <div class="did-you-know__top-card" id="didYouKnowTop">
+                            <h2 class="section-title section-title--cyan">DID YOU KNOW?</h2>
+                            <p class="did-you-know__short-text" id="animalShortFact">
+                                
+                            </p>
+                        </div>
+
+                        
+                        <div class="animal-details" id="animalDetailsBlock">
+                            
+                            
+                            <div class="animal-details__props">
+                                <ul class="props-list" id="animalPropsList">
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Common name:</span>
+                                        <span class="props-list__val" id="valCommonName"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Scientific name:</span>
+                                        <span class="props-list__val" id="valScientificName"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Type:</span>
+                                        <span class="props-list__val" id="valType"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Size:</span>
+                                        <span class="props-list__val" id="valSize"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Diet:</span>
+                                        <span class="props-list__val" id="valDiet"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Habitat:</span>
+                                        <span class="props-list__val" id="valHabitat"></span>
+                                    </li>
+                                    <li class="props-list__item">
+                                        <span class="props-list__label">Range:</span>
+                                        <span class="props-list__val" id="valRange"></span>
+                                        <button class="btn-text-arrow" id="viewMapInlineBtn" aria-label="View Map">
+                                            VIEW MAP
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12H19" stroke="#E66A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 5L19 12L12 19" stroke="#E66A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            
+                            <div class="animal-details__image-wrapper">
+                                <img src="" alt="" class="animal-details__img" id="animalDetailImg">
+                            </div>
+
+                        </div>
+
+                        
+                        <div class="animal-details__long-text">
+                            <p id="animalLongText"></p>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__top">
+                <div class="footer__brands">
+                    <a href="../landing/index.html" class="footer__brand-link" aria-label="Online Zoo home">
+                        <img class="footer__brand-logo footer__brand-logo--zoo"
+                            src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="Yem Digital">
+                        <img class="footer__brand-logo footer__brand-logo--yem"
+                            src="../../assets/icons/logo-yem-digital.svg" alt="Yem Digital">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="RS School">
+                        <img class="footer__brand-logo footer__brand-logo--rs"
+                            src="../../assets/icons/logo-rs-school.svg" alt="RS School">
+                    </a>
+                </div>
+
+                <nav class="footer__nav" aria-label="Footer navigation">
+                    <ul class="footer__nav-list">
+                        <li><a class="footer__nav-link" href="../landing/index.html">About</a></li>
+                        <li><a class="footer__nav-link" href="../map/index.html">Map</a></li>
+                        <li><a class="footer__nav-link" href="../animal/index.html">Zoos</a></li>
+                        <li><a class="footer__nav-link" href="../contact/index.html">Contact us</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#" class="footer__donate">
+                    Donate for volunteers
+                    <span class="footer__donate-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="footer__divider" aria-hidden="true"></div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyrights">
+                    <span class="footer__copyright">© 2021 DinaK</span>
+                    <span class="footer__copyright">© Yem Digital</span>
+                    <span class="footer__copyright">© RSSchool</span>
+                </div>
+                <div class="footer__social" aria-label="Social links">
+                    <a class="footer__social-link" href="#" aria-label="YouTube">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Instagram">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Facebook">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <div class="map-modal-overlay" id="mapModalOverlay">
+        <div class="map-modal" id="mapModal">
+            <button class="map-modal__close" id="mapModalClose" aria-label="Close Map">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#333B41"/>
+                </svg>
+            </button>
+            <div id="mapContainer" class="map-container"></div>
+        </div>
+    </div>
+
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script type="module" src="../donation-popup.ts"></script>
+    <script type="module" src="script.ts"></script>
+    <script type="module">
+        import { initAuthUI } from "../auth-ui.ts";
+        initAuthUI();
+    </script>
+</body>
+
+</html>

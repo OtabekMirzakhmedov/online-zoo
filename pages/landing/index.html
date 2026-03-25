@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Zoo | Home</title>
+    <link rel="icon" href="../../assets/icons/favicon.png.jpg" type="image/png">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="../donation-popup.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header__container">
+            <a href="#" class="header__logo" aria-label="Online Zoo home">
+                <img class="header__logo-img" src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+            </a>
+            <button class="header__burger" id="burgerMenu" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+            </button>
+            <nav class="header__nav" id="headerNav" aria-label="Primary">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="../landing/index.html" class="header__nav-link header__nav-link--active">About</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../map/index.html" class="header__nav-link">Map</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link">Zoos</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="../contact/index.html" class="header__nav-link">Contact us</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="https://www.figma.com/design/lnK11foY8Aoa6oOlDXovVN/Online-ZOO-Project"
+                            class="header__nav-link header__nav-link--design" target="_blank"
+                            rel="noreferrer">Design</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__social" aria-label="Social links">
+                <a class="header__social-link" href="#" aria-label="YouTube">
+                    <img class="header__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Instagram">
+                    <img class="header__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                </a>
+                <a class="header__social-link" href="#" aria-label="Facebook">
+                    <img class="header__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                </a>
+            </div>
+            <div class="auth-ui-container" id="userProfileContainer"></div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h2 class="hero__title">Watch your <br> favorite animal <br> online</h2>
+                    <p class="hero__subtitle">
+                        Explore the exciting and mysterious world of wild animals in a natural setting without
+                        leaving your home.
+                    </p>
+                    <a href="../map/index.html" class="btn btn--primary hero__cta">
+                        <span class="btn__text">View live cam</span>
+                        <span class="btn__icon" aria-hidden="true">
+                            <img src="../../assets/icons/icon-arrow-white.svg" alt="">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="info info--welcome">
+            <div class="container info__container">
+                <div class="info__content">
+                    <h2 class="info__title">Welcome to the Online Zoo!</h2>
+                    <p class="info__text">
+                        On our website, using live webcams, fans of all ages can observe various animals. Among
+                        them, are Giant pandas, eagles, alligators, forest gorillas, African lions, and others. It is
+                        the whole natural world in real-time in front of our cameras. We hope you will enjoy watching
+                        closely and explore animals behavior and habitats! Note: animals are not always on view on
+                        cameras, so please check back if you don't see anything.
+                    </p>
+                </div>
+                <div class="info__media">
+                    <img class="info__image" src="../../assets/images/howitworks1.png"
+                        alt="Welcome sign at the Online Zoo">
+                </div>
+            </div>
+        </section>
+
+        <section class="info info--work">
+            <div class="container info__container">
+                <div class="info__media">
+                    <img class="info__image" src="../../assets/images/howitworks2.png" alt="Eagles perched on a tree">
+                </div>
+                <div class="info__content">
+                    <h2 class="info__title">How we work</h2>
+                    <p class="info__text">
+                        Online Zoo is a nonprofit committed to inspiring awareness and preservation of nature and wild
+                        animals in our zoo and worldwide. Every day, our experts work to safeguard the health and
+                        wellness of the animals. To continue these efforts, we need your help. We're so grateful to our
+                        numerous supporters. All donations, large and small, go a long way to the conservation efforts
+                        of our pets.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="donation">
+            <div class="container donation__container">
+                <div class="donation__content">
+                    <h2 class="donation__title">Your donation makes a difference!</h2>
+                    <p class="donation__text">
+                        The Online Zoo's animal webcams are some of the most famous on the internet. Tune in to watch
+                        your favourite animals live, 24/7!
+                    </p>
+                </div>
+                <div class="donation__action">
+                    <span class="donation__label">Quick Donate</span>
+                    <div class="donation__input">
+                        <span class="donation__currency">$</span>
+                        <input class="donation__field" type="text" placeholder="Donation Amount"
+                            aria-label="Donation amount">
+                        <button class="donation__button" type="button" aria-label="Donate now">
+                            <img class="donation__arrow" src="../../assets/icons/icon-arrow-white.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pets">
+            <div class="container pets__container">
+                <h2 class="pets__title">Meet some our pets</h2>
+                <p class="pets__subtitle">
+                    Do you have a special place in your heart for animals? Who are your favorites? Perhaps you'd like
+                    to donate to special ones or all our pets? We think it's important for you to choose how your
+                    donation is used.
+                </p>
+                <div class="pets__controls" aria-label="Pets slider controls">
+                    <button class="pets__arrow pets__arrow--prev" id="petsPrev" type="button"
+                        aria-label="Previous pets">
+                        <span class="pets__arrow-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="pets__arrow pets__arrow--next" id="petsNext" type="button" aria-label="Next pets">
+                        <span class="pets__arrow-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="pets__grid" id="petsGrid">
+                </div>
+                <a class="pets__cta" href="../animal/index.html">
+                    Choose your favorite
+                    <span class="pets__cta-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </section>
+
+        <section class="pay-feed">
+            <div class="container pay-feed__container">
+                <h2 class="pay-feed__title">Pay and feed</h2>
+                <div class="pay-feed__items">
+                    <article class="pay-feed__item">
+                        <div class="pay-feed__item-top">
+                            <span class="pay-feed__number">01</span>
+                            <span class="pay-feed__line" aria-hidden="true"></span>
+                        </div>
+                        <div class="pay-feed__item-body">
+                            <img class="pay-feed__image" src="../../assets/images/payandfeed1.png"
+                                alt="Chimpanzee in the zoo">
+                            <div class="pay-feed__content">
+                                <img class="pay-feed__icon-svg" src="../../assets/icons/icon-pay-feed-impact.svg" alt=""
+                                    aria-hidden="true">
+                                <h3 class="pay-feed__item-title">Your donation has an impact</h3>
+                                <p class="pay-feed__item-text">
+                                    Providing our animals with high-quality nutritious diets is just one element of
+                                    animal
+                                    care at our Zoo. We do all the best so that our animals can eat food similar to
+                                    what they might find in their natural habitats while making sure they get the right
+                                    mix of nutrients, proteins, and vitamins to be happy and healthy. Please help us
+                                    provide nutritious food for our animals by donating. The generosity of people like
+                                    you can help us make sure that our animals enjoy good food that keeps them in great
+                                    condition.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pay-feed__item">
+                        <div class="pay-feed__item-top">
+                            <span class="pay-feed__number">02</span>
+                            <span class="pay-feed__line" aria-hidden="true"></span>
+                        </div>
+                        <div class="pay-feed__item-body">
+                            <img class="pay-feed__image" src="../../assets/images/payandfeed2.png"
+                                alt="Bananas prepared for feeding">
+                            <div class="pay-feed__content">
+                                <img class="pay-feed__icon-svg pay-feed__icon-svg--donation"
+                                    src="../../assets/icons/icon-pay-feed-donation.svg" alt="" aria-hidden="true">
+                                <h3 class="pay-feed__item-title">Make a donation</h3>
+                                <p class="pay-feed__item-text">
+                                    You can donate through your credit card without any fees. It is easy and safe.
+                                    We do not keep donors&apos; personal information on an online network. Choose an
+                                    amount to give and the pet&apos;s name if needed. One of the most effective ways you
+                                    can give is by making regular donations.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pay-feed__item">
+                        <div class="pay-feed__item-top">
+                            <span class="pay-feed__number">03</span>
+                            <span class="pay-feed__line" aria-hidden="true"></span>
+                        </div>
+                        <div class="pay-feed__item-body">
+                            <img class="pay-feed__image" src="../../assets/images/payandfeed3.png"
+                                alt="Chimpanzee eating a banana">
+                            <div class="pay-feed__content">
+                                <img class="pay-feed__icon-svg pay-feed__icon-svg--charity"
+                                    src="../../assets/icons/icon-pay-feed-charity.svg" alt="" aria-hidden="true">
+                                <h3 class="pay-feed__item-title">Bring your food charity straight to your favorites
+                                    pets.</h3>
+                                <p class="pay-feed__item-text">
+                                    After your donation, the animal receives its favorite foods. You can support your
+                                    favorite animals or any animal you care about and make a real personal impact.
+                                    Never doubt that your donation can make a difference even if it is small.
+                                </p>
+                                <a href="#" class="btn btn--primary pay-feed__cta">
+                                    <span class="btn__text">Donate now</span>
+                                    <span class="btn__icon" aria-hidden="true">
+                                        <img src="../../assets/icons/icon-arrow-white.svg" alt="">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="users-opinion">
+            <div class="container users-opinion__container">
+                <div class="users-opinion__intro">
+                    <h2 class="users-opinion__title">What our users think</h2>
+                    <p class="users-opinion__text">
+                        We are continuously striving to improve the experiences of our future guests. Below you can
+                        leave your own feedback, or simply view feedback from past clients.
+                    </p>
+                    <a href="../contact/index.html" class="users-opinion__cta">
+                        Leave feedback
+                        <span class="users-opinion__cta-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="users-opinion__content">
+                    <div class="users-opinion__grid" id="usersCardsGrid"></div>
+                    <div class="users-opinion__controls" aria-label="Users feedback controls">
+                        <button class="users-opinion__arrow users-opinion__arrow--prev" id="usersPrev" type="button"
+                            aria-label="Previous feedback">
+                            <span class="users-opinion__arrow-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="users-opinion__arrow users-opinion__arrow--next" id="usersNext" type="button"
+                            aria-label="Next feedback">
+                            <span class="users-opinion__arrow-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="care-love">
+            <div class="container care-love__container">
+                <h2 class="care-love__title">Care for the animals you love</h2>
+                <p class="care-love__subtitle">
+                    You can help to look after the animals you love with your gift today
+                </p>
+
+                <div class="care-love__row">
+                    <img class="care-love__big-image" src="../../assets/images/feed1.png" alt="Koala close-up">
+
+                    <article class="care-love__card" tabindex="0" role="link" aria-label="Open Lucas animal page">
+                        <img class="care-love__card-image" src="../../assets/images/feed2.png"
+                            alt="Lucas eating panda cake">
+                        <div class="care-love__card-body">
+                            <p class="care-love__card-text">
+                                Your $30 could give Lucas a slice of panda cake, made with our secret recipe.
+                            </p>
+                            <a class="care-love__feed-link" href="../animal/index.html">
+                                Feed
+                                <span class="care-love__feed-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="care-love__row-small">
+                    <article class="care-love__card" tabindex="0" role="link" aria-label="Open Senja animal page">
+                        <img class="care-love__card-image" src="../../assets/images/feed3.png"
+                            alt="Senja the Sumatran tiger">
+                        <div class="care-love__card-body">
+                            <p class="care-love__card-text">
+                                Your $150 will help to care for Senja, a Sumatran tiger, for three weeks.
+                            </p>
+                            <a class="care-love__feed-link" href="../animal/index.html">
+                                Feed
+                                <span class="care-love__feed-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="care-love__card" tabindex="0" role="link" aria-label="Open Andy animal page">
+                        <img class="care-love__card-image" src="../../assets/images/feed4.png"
+                            alt="Andy the lemur eating fruit">
+                        <div class="care-love__card-body">
+                            <p class="care-love__card-text">
+                                With your support, we can give Andy his favorite fruits. Especially when it&apos;s not
+                                fruit season in its natural habitat.
+                            </p>
+                            <a class="care-love__feed-link" href="../animal/index.html">
+                                Feed
+                                <span class="care-love__feed-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="care-love__card" tabindex="0" role="link"
+                        aria-label="Open Sam and Lora animal page">
+                        <img class="care-love__card-image" src="../../assets/images/feed5.png"
+                            alt="Sam and Lora bald eagles">
+                        <div class="care-love__card-body">
+                            <p class="care-love__card-text">
+                                Sam &amp; Lora have hatched and raised numerous young and will be happy with your help.
+                            </p>
+                            <a class="care-love__feed-link" href="../animal/index.html">
+                                Feed
+                                <span class="care-love__feed-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="care-love__carousel" id="careLoveCarousel">
+                    <div class="care-love__carousel-track" id="careLoveTrack">
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link"
+                                aria-label="Open Lucas animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed2.png"
+                                    alt="Lucas eating panda cake">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        Your $30 could give Lucas a slice of panda cake, made with our secret recipe.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link"
+                                aria-label="Open Senja animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed3.png"
+                                    alt="Senja the Sumatran tiger">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        Your $150 will help to care for Senja, a Sumatran tiger, for three weeks.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link"
+                                aria-label="Open Andy animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed4.png"
+                                    alt="Andy the lemur eating fruit">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        With your support, we can give Andy his favorite fruits. Especially when it's
+                                        not fruit season in its natural habitat.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="care-love__carousel-slide">
+                            <article class="care-love__card" tabindex="0" role="link"
+                                aria-label="Open Sam and Lora animal page">
+                                <img class="care-love__card-image" src="../../assets/images/feed5.png"
+                                    alt="Sam and Lora bald eagles">
+                                <div class="care-love__card-body">
+                                    <p class="care-love__card-text">
+                                        Sam &amp; Lora have hatched and raised numerous young and will be happy with
+                                        your help.
+                                    </p>
+                                    <a class="care-love__feed-link" href="../animal/index.html">
+                                        Feed
+                                        <span class="care-love__feed-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="care-love__carousel-dots" id="careLoveDots"></div>
+                </div>
+
+                <a class="care-love__choose" href="../animal/index.html">
+                    Choose your favorite
+                    <span class="care-love__choose-icon" aria-hidden="true"></span>
+                </a>
+
+                <img class="care-love__bottom-image" src="../../assets/images/feed6.jpg"
+                    alt="Kid touching a display with an owl">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__top">
+                <div class="footer__brands">
+                    <a href="../landing/index.html" class="footer__brand-link" aria-label="Online Zoo home">
+                        <img class="footer__brand-logo footer__brand-logo--zoo"
+                            src="../../assets/icons/logo-online-zoo.svg" alt="Online Zoo">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="Yem Digital">
+                        <img class="footer__brand-logo footer__brand-logo--yem"
+                            src="../../assets/icons/logo-yem-digital.svg" alt="Yem Digital">
+                    </a>
+                    <a href="#" class="footer__brand-link" aria-label="RS School">
+                        <img class="footer__brand-logo footer__brand-logo--rs"
+                            src="../../assets/icons/logo-rs-school.svg" alt="RS School">
+                    </a>
+                </div>
+
+                <nav class="footer__nav" aria-label="Footer navigation">
+                    <ul class="footer__nav-list">
+                        <li><a class="footer__nav-link" href="../landing/index.html">About</a></li>
+                        <li><a class="footer__nav-link" href="../map/index.html">Map</a></li>
+                        <li><a class="footer__nav-link" href="../animal/index.html">Zoos</a></li>
+                        <li><a class="footer__nav-link" href="../contact/index.html">Contact us</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#" class="footer__donate">
+                    Donate for volunteers
+                    <span class="footer__donate-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="footer__divider" aria-hidden="true"></div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyrights">
+                    <span class="footer__copyright">© 2021 DinaK</span>
+                    <span class="footer__copyright">© Yem Digital</span>
+                    <span class="footer__copyright">© RSSchool</span>
+                </div>
+                <div class="footer__social" aria-label="Social links">
+                    <a class="footer__social-link" href="#" aria-label="YouTube">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-youtube.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Instagram">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-instagram.svg" alt="">
+                    </a>
+                    <a class="footer__social-link" href="#" aria-label="Facebook">
+                        <img class="footer__social-icon" src="../../assets/icons/icon-facebook.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../donation-popup.ts"></script>
+    <script type="module" src="script.ts"></script>
+    <script type="module">
+        import { initAuthUI } from "../auth-ui.ts";
+        initAuthUI();
+    </script>
+</body>
+
+</html>
