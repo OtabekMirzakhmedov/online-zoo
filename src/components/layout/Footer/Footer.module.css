@@ -1,0 +1,393 @@
+.footer {
+  background: #20113D;
+  min-height: 329px;
+}
+
+.container {
+  padding-top: 48px;
+  padding-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 329px;
+  max-width: var(--container-width-desktop);
+  margin: 0 auto;
+  padding-left: clamp(16px, 4.2vw, 200px);
+  padding-right: clamp(16px, 4.2vw, 200px);
+}
+
+.top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 44px;
+}
+
+.brands {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.brandLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brandLogo {
+  display: block;
+}
+
+.brandLogoZoo {
+  width: 96px;
+  height: 50px;
+  filter: brightness(0) invert(1);
+}
+
+.brandLogoYem {
+  width: 50px;
+  height: 50px;
+}
+
+.brandLogoRs {
+  width: 138px;
+  height: 52px;
+}
+
+.nav {
+  justify-self: center;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+}
+
+.donate {
+  width: 359px;
+  height: 74px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 26px 45px;
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+}
+
+.donate:hover {
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.donateIcon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 20px;
+  display: block;
+  background-color: var(--color-white);
+  -webkit-mask: url('/assets/icons/icon-arrow-white.svg') center / contain no-repeat;
+  mask: url('/assets/icons/icon-arrow-white.svg') center / contain no-repeat;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 38px 0 34px;
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyrights {
+  display: flex;
+  align-items: center;
+  gap: 52px;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.social {
+  display: flex;
+  gap: 30px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+/* Tablet */
+@media screen and (max-width: 1200px) {
+  .footer {
+    min-height: 0;
+  }
+
+  .container {
+    min-height: 0;
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .nav {
+    justify-self: start;
+  }
+
+  .navList {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .donate {
+    width: 100%;
+    max-width: 359px;
+    font-size: 18px;
+    justify-self: start;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .copyrights {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .top {
+    align-items: center;
+    justify-items: center;
+  }
+
+  .brands {
+    justify-content: center;
+  }
+
+  .nav {
+    justify-self: center;
+  }
+
+  .navList {
+    justify-content: center;
+  }
+
+  .donate {
+    justify-self: center;
+  }
+
+  .bottom {
+    align-items: center;
+  }
+
+  .copyrights {
+    justify-content: center;
+  }
+
+  .social {
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 640px) {
+  .brandLogoZoo {
+    width: 60px;
+    height: 31px;
+  }
+
+  .brandLogoYem {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brandLogoRs {
+    width: 82px;
+    height: 31px;
+  }
+
+  .navLink {
+    font-size: 10px;
+  }
+
+  .donate {
+    width: 360px;
+    max-width: 100%;
+    height: 74px;
+    padding: 26px 45px;
+    border-radius: 5px;
+    border-width: 1px;
+    gap: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .brands {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .donate {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    padding: 16px 24px;
+    font-size: 12px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .social {
+    order: -1;
+  }
+
+  .copyrights {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 320px) {
+  .container {
+    padding-top: 40px;
+    padding-bottom: 36px;
+  }
+
+  .brands {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .brandLogoZoo {
+    width: 60px;
+    height: 31px;
+  }
+
+  .brandLogoYem {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brandLogoRs {
+    width: 82px;
+    height: 31px;
+  }
+
+  .navList {
+    gap: 12px;
+  }
+
+  .navLink {
+    font-size: 10px;
+  }
+
+  .donate {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    padding: 16px 24px;
+    font-size: 12px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .social {
+    order: -1;
+    gap: 16px;
+  }
+
+  .copyrights {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .copyright {
+    font-size: 10px;
+  }
+
+  .socialLink {
+    width: 32px;
+    height: 32px;
+  }
+
+  .socialIcon {
+    width: 32px;
+    height: 32px;
+  }
+}
